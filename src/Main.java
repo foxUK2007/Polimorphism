@@ -3,24 +3,20 @@ import autoRacing.*;
 public class Main {
     public static void main(String[] args) {
 
-        System.out.println();
-        System.out.println(" Автомобили ");
-        System.out.println();
+        Car car1 = new Car("Audi", "A8 50 L TDI quattro", Car.BodyType.COUPE);
+        Car car2 = new Car("BMW", "Z8", Car.BodyType.COUPE);
+        Car car3 = new Car("Kia", "Sportage 4-го поколения", Car.BodyType.CROSSOVER);
+        Car car4 = new Car("Hyundai", "Avante", Car.BodyType.SEDAN);
 
-        Car car1 = new Car("Audi", "A8 50 L TDI quattro", 3.0);
-        Car car2 = new Car("BMW", "Z8", 3.0);
-        Car car3 = new Car("Kia", "Sportage 4-го поколения", 2.4);
-        Car car4 = new Car("Hyundai", "Avante", 1.6);
+        Bus bus1 = new Bus("ПАЗ", "3237", Bus.BusCapacity.SMALL);
+        Bus bus2 = new Bus("ЛиАЗ", "6213", Bus.BusCapacity.LARGE_MIN);
+        Bus bus3 = new Bus("КАвЗ", "4270", Bus.BusCapacity.MEDIUM_MAX);
+        Bus bus4 = new Bus("НЕФАЗ", "5299", Bus.BusCapacity.MEDIUM_MIN);
 
-        Bus bus1 = new Bus("ПАЗ", "3237", 3.9);
-        Bus bus2 = new Bus("ЛиАЗ", "6213", 5.9);
-        Bus bus3 = new Bus("КАвЗ", "4270", 5.9);
-        Bus bus4 = new Bus("НЕФАЗ", "5299", 6.7);
-
-        Truck truck1 = new Truck("Scania", " G 440 A6x4NA", 13.0);
-        Truck truck2 = new Truck("DAF", " XF 460 4X2", 12.9);
-        Truck truck3 = new Truck("VOLVO", " FH", 12.1);
-        Truck truck4 = new Truck("FORD", " F-MAX", 12.7);
+        Truck truck1 = new Truck("Scania", " G 440 A6x4NA", Truck.CarryingTruck.N2);
+        Truck truck2 = new Truck("DAF", " XF 460 4X2", Truck.CarryingTruck.N3 );
+        Truck truck3 = new Truck("VOLVO", " FH", Truck.CarryingTruck.N2 );
+        Truck truck4 = new Truck("FORD", " F-MAX", Truck.CarryingTruck.N1);
 
         DriverB<Car> driverB = new DriverB<Car>("Сурков Олег Витальевич", true, 22);
 
@@ -28,11 +24,20 @@ public class Main {
 
         DriverD<Bus> driverD = new DriverD<Bus>("Гусев Богдан Яковлевич", true, 36);
 
+        System.out.println();
+        System.out.println(" Автомобили ");
+        System.out.println();
+
         printInfo(car1);
         printInfo(car2);
         printInfo(car3);
         printInfo(car4);
         car1.maxSpeed();
+
+
+        driverB.printDriverB(car1);
+        driverC.printDriverC(truck3);
+        driverD.printDriverD(bus2);
 
         System.out.println();
         System.out.println(" Автобусы ");
@@ -43,6 +48,7 @@ public class Main {
         printInfo(bus3);
         printInfo(bus4);
         bus1.pitStop();
+        bus1.printType();
 
 
         System.out.println();
@@ -54,29 +60,25 @@ public class Main {
         printInfo(truck3);
         printInfo(truck4);
         truck1.bestTimeLap();
-
-        driverB.printDriverB(car1);
-        driverC.printDriverC(truck3);
-        driverD.printDriverD(bus2);
-
-
     }
 
     public static void printInfo(Car car) {
         System.out.println(
                 "Марка автомобиля: " + car.getBrand() +
                         ". Модель: " + car.getModel() +
-                        ". Объем двигателя: " + car.getEngineVolume()
+                        ". " + car.toString()
         );
         car.startMoving();
         car.stopMoving();
+        car.pitStop();
+
     }
 
     public static void printInfo(Bus bus) {
         System.out.println(
                 "Марка автобуса: " + bus.getBrand() +
                         ". Модель: " + bus.getModel() +
-                        ". Объем двигателя: " + bus.getEngineVolume()
+                        ". " + bus.toString()
 
         );
         bus.startMoving();
@@ -87,11 +89,13 @@ public class Main {
         System.out.println(
                 "Марка грузовика: " + truck.getBrand() +
                         ". Модель: " + truck.getModel() +
-                        ". Объем двигателя: " + truck.getEngineVolume()
+                        ". " + truck.toString()
 
         );
         truck.startMoving();
         truck.stopMoving();
+
+
 
     }
 
