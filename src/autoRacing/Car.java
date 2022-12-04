@@ -32,7 +32,7 @@ public class Car extends autoRacing implements competing {
 
 
     public Car(String brand, String model, BodyType bodyType) {
-        super(brand, model, "бензин", 2.0);
+        super(brand, model, "бензин", 2.0, true);
         this.bodyType = bodyType;
     }
 
@@ -85,4 +85,13 @@ public class Car extends autoRacing implements competing {
         return "тип кузова: " + bodyType.BodyType;
     }
 
+    @Override
+    public boolean isGetDiagnosed() {
+        if (getDiagnosed) {
+            System.out.println("Автомобиль " + getBrand() + getModel() + " прошел диагностику");
+        } else {
+            throw new RuntimeException("Необходимо пройти диагностику");
+        }
+        return getDiagnosed;
+    }
 }

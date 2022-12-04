@@ -26,7 +26,7 @@ public class Bus extends autoRacing implements competing {
 
 
     public Bus(String brand, String model, BusCapacity busCapacity) {
-        super(brand, model, "дизель", 4.5);
+        super(brand, model, "дизель", 4.5, true);
         this.busCapacity = busCapacity;
     }
 
@@ -81,6 +81,15 @@ public class Bus extends autoRacing implements competing {
         return "Вместимость автобуса: " + busCapacity.busCapacity + " человек.";
     }
 
+    public Bus(String brand, String model, String fuelType, double amountFuel, boolean getDiagnosed) {
+        super(brand, model, fuelType, amountFuel, getDiagnosed);
+    }
+
+    @Override
+    public boolean isGetDiagnosed() {
+        System.out.println("Автобус " + getBrand() + getModel() + " в диагностике не нуждается");
+        return true;
+    }
 
 }
 

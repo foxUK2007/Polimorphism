@@ -20,11 +20,15 @@ public abstract class Drivers {
     }
 
     public boolean isHasDriversLicense() {
-        return hasDriversLicense;
+      return isHasDriversLicense();
     }
 
     public void setHasDriversLicense(boolean hasDriversLicense) {
-        this.hasDriversLicense = hasDriversLicense;
+        if (hasDriversLicense == true){
+            this.hasDriversLicense = true;
+        }else {
+            throw new RuntimeException("Необходимо указать категорию прав");
+        }
     }
 
     public int getDrivingExperience() {

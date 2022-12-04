@@ -14,8 +14,8 @@ public class Main {
         Bus bus4 = new Bus("НЕФАЗ", "5299", Bus.BusCapacity.MEDIUM_MIN);
 
         Truck truck1 = new Truck("Scania", " G 440 A6x4NA", Truck.CarryingTruck.N2);
-        Truck truck2 = new Truck("DAF", " XF 460 4X2", Truck.CarryingTruck.N3 );
-        Truck truck3 = new Truck("VOLVO", " FH", Truck.CarryingTruck.N2 );
+        Truck truck2 = new Truck("DAF", " XF 460 4X2", Truck.CarryingTruck.N3);
+        Truck truck3 = new Truck("VOLVO", " FH", Truck.CarryingTruck.N2);
         Truck truck4 = new Truck("FORD", " F-MAX", Truck.CarryingTruck.N1);
 
         DriverB<Car> driverB = new DriverB<Car>("Сурков Олег Витальевич", true, 22);
@@ -33,11 +33,17 @@ public class Main {
         printInfo(car3);
         printInfo(car4);
         car1.maxSpeed();
+        car1.isGetDiagnosed();
+
+        driverB.setHasDriversLicense(true);
+        driverC.setHasDriversLicense(true);
+        driverD.setHasDriversLicense(false);
 
 
         driverB.printDriverB(car1);
         driverC.printDriverC(truck3);
         driverD.printDriverD(bus2);
+
 
         System.out.println();
         System.out.println(" Автобусы ");
@@ -60,6 +66,8 @@ public class Main {
         printInfo(truck3);
         printInfo(truck4);
         truck1.bestTimeLap();
+
+        checkDiagnosed(bus1);
     }
 
     public static void printInfo(Car car) {
@@ -71,6 +79,7 @@ public class Main {
         car.startMoving();
         car.stopMoving();
         car.pitStop();
+
 
     }
 
@@ -95,10 +104,12 @@ public class Main {
         truck.startMoving();
         truck.stopMoving();
 
-
-
     }
 
+    public static void checkDiagnosed(autoRacing autoRacing) {
+        System.out.println(autoRacing.isGetDiagnosed())
+
+    ;}
 }
 
 

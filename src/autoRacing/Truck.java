@@ -87,4 +87,20 @@ public class Truck extends autoRacing implements competing {
                     " имеет грузоподъемность от " + carryingTruck.minCarryingTruck + " тонн, до " + carryingTruck.maxCarryingTruck + " тонн.";
         }
     }
+
+    public Truck(String brand, String model, String fuelType, double amountFuel, boolean getDiagnosed) {
+        super(brand, model, fuelType, amountFuel, getDiagnosed);
+    }
+
+    @Override
+    public boolean isGetDiagnosed() {
+        if (getDiagnosed) {
+            System.out.println("Грузовик " + getBrand() + getModel() + " прошел диагностику");
+        } else {
+            throw new RuntimeException("Необходимо пройти диагностику");
+        }
+        return getDiagnosed;
+    }
+
+
 }

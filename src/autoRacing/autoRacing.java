@@ -7,12 +7,15 @@ public abstract class autoRacing {
     protected String fuelType;
     protected double amountFuel;
 
+    protected boolean getDiagnosed;
 
-    public autoRacing(String brand, String model, String fuelType, double amountFuel) {
+
+    public autoRacing(String brand, String model, String fuelType, double amountFuel, boolean getDiagnosed) {
         this.brand = brand;
         this.model = model;
         this.fuelType = fuelType;
         this.amountFuel = amountFuel;
+        this.getDiagnosed = getDiagnosed;
     }
 
     public autoRacing(String brand, String model, double engineVolume) {
@@ -46,10 +49,24 @@ public abstract class autoRacing {
         return engineVolume;
     }
 
+    public autoRacing(String brand, String model, boolean getDiagnosed) {
+        this.brand = brand;
+        this.model = model;
+        this.getDiagnosed = getDiagnosed;
+    }
+
+    public boolean isGetDiagnosed() {
+        return getDiagnosed;
+    }
+
     public abstract void reFuel();
 
     public abstract void startMoving();
     public abstract void stopMoving();
+
+    public abstract  void printType();
+
+
 
 }
 
